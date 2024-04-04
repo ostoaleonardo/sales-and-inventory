@@ -1,3 +1,8 @@
 export { Home } from './Home.tsx'
 export { Restaurant } from './Restaurant.tsx'
 export { Box } from './Box.tsx'
+export { More } from './More.tsx'
+export { Search } from './Search.tsx'
+export { Filter } from './Filter.tsx'
+export { Add } from './Add.tsx'
+export { LayoutColumn } from './LayoutColumn.tsx'
