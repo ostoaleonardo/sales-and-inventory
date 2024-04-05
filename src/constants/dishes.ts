@@ -8,11 +8,11 @@ export const INITIAL_VISIBLE_COLUMNS = [
 
 export const DISHES_COLUMNS = [
     { name: 'ID', uid: 'id', sortable: true },
-    { name: 'NAME', uid: 'name', sortable: true },
-    { name: 'PRICE', uid: 'price', sortable: true },
-    { name: 'CATEGORY', uid: 'category', sortable: true },
-    { name: 'CREATED AT', uid: 'created_at', sortable: true },
-    { name: 'ACTIONS', uid: 'actions' },
+    { name: 'NOMBRE', uid: 'name', sortable: true },
+    { name: 'PRECIO', uid: 'price', sortable: true },
+    { name: 'CATEGORIA', uid: 'category', sortable: true },
+    { name: 'CREADO', uid: 'created_at', sortable: true },
+    { name: 'ACCIONES', uid: 'actions' },
 ]
 
 export const DISHES_CATEGORIES = [
