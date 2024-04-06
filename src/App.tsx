@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import { Home, Login } from './pages'
-import { Aside } from './components'
+import { Login, Home, Dishes, Categories } from './pages'
+import { Sidebar, Nav } from './components'
 import { supabase } from './database'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     useEffect(() => {
         supabase.auth.onAuthStateChange((event) => {
             if (event === 'SIGNED_IN') {
-                navigate('/home')
+                // navigate('/home')
             } else if (event === 'SIGNED_OUT') {
                 navigate('/')
             }
@@ -18,16 +18,23 @@ function App() {
     }, [])
 
     return (
-        <main className='w-full h-screen grid grid-cols-6'>
-            <Aside />
-            <Routes>
-                <Route path='/' element={<Login />} />
-                <Route path='/home' element={<Home />} />
-                <Route path='/sell' element={<Home />} />
-                <Route path='/inventory' element={<Home />} />
-                <Route path='*' element={<Login />} />
-            </Routes>
-        </main>
+        <>
+            <main className='w-full min-h-screen inline-flex'>
+                <Sidebar />
+                <section className='w-full flex flex-col'>
+                    <Nav />
+                    <Routes>
+                        <Route path='/' element={<Login />} />
+                        <Route path='/home' element={<Home />} />
+                        <Route path='/sell' element={<Home />} />
+                        <Route path='/dishes' element={<Dishes />} />
+                        <Route path='/categories' element={<Categories />} />
+                        <Route path='/inventory' element={<Home />} />
+                        <Route path='*' element={<Login />} />
+                    </Routes>
+                </section>
+            </main>
+        </>
     )
 }
 
