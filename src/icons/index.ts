@@ -1,6 +1,8 @@
+export { Menu } from './Menu.tsx'
 export { Home } from './Home.tsx'
 export { Restaurant } from './Restaurant.tsx'
 export { Box } from './Box.tsx'
+export { Bowl } from './Bowl.tsx'
 export { More } from './More.tsx'
 export { Search } from './Search.tsx'
 export { Filter } from './Filter.tsx'
