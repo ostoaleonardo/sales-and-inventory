@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import { Login, Home, Dishes, Categories } from './pages'
+import { Login, Home, Sell, Dishes, Categories, Inventory } from './pages'
 import { Sidebar, Nav } from './components'
 import { supabase } from './database'
 
@@ -26,10 +26,10 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Login />} />
                         <Route path='/home' element={<Home />} />
-                        <Route path='/sell' element={<Home />} />
+                        <Route path='/sell' element={<Sell />} />
                         <Route path='/dishes' element={<Dishes />} />
                         <Route path='/categories' element={<Categories />} />
-                        <Route path='/inventory' element={<Home />} />
+                        <Route path='/inventory' element={<Inventory />} />
                         <Route path='*' element={<Login />} />
                     </Routes>
                 </section>
