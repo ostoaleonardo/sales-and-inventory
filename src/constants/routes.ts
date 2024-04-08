@@ -7,8 +7,8 @@ export const NAVIGATION_ROUTES = [
         icon: Home({ className: 'w-4 h-4' }),
     },
     {
-        path: '/sell',
-        name: 'Vender',
+        path: '/sales',
+        name: 'Ventas',
         icon: Restaurant({ className: 'w-4 h-4' }),
     },
     {
