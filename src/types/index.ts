@@ -1,7 +1,13 @@
 export type Dish = {
-    id: number
+    id: string
     name: string
     price: number
-    category: string
+    categories: Categories
+    created_at: string
+}
+
+export type Categories = {
+    id: string
+    name: string
     created_at: string
 }
