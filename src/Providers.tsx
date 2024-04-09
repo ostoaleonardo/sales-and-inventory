@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { NextUIProvider } from '@nextui-org/react'
+import { AuthProvider } from './context/authContext'
 
 type Props = {
     children: React.ReactNode
@@ -7,10 +8,12 @@ type Props = {
 
 export default function Providers({ children }: Props) {
     return (
-        <BrowserRouter>
-            <NextUIProvider>
-                {children}
-            </NextUIProvider>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <NextUIProvider>
+                    {children}
+                </NextUIProvider>
+            </BrowserRouter>
+        </AuthProvider>
     )
 }
