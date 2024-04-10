@@ -6,16 +6,18 @@ export function useTables() {
             .from(table)
             .select('*')
 
-        return data
+        return data || []
     }
 
-    const getRowsPerPage = async (table: string, from: number, to: number) => {
+    const getRowsPerPage = async (table: string, from: number, to: number, relationship?: string) => {
+        const query = relationship ? '*,' + relationship : '*'
+
         let { data } = await supabase
             .from(table)
-            .select('*')
+            .select(query)
             .range(from, to)
 
-        return data
+        return data as unknown || []
     }
 
     const getRowById = async (table: string, id: number) => {
@@ -25,7 +27,7 @@ export function useTables() {
             .eq('id', id)
             .single()
 
-        return data
+        return data || {}
     }
 
     const insertRow = async (table: string, values: any) => {
@@ -59,7 +61,7 @@ export function useTables() {
             .from(table)
             .select('*', { count: 'exact' })
 
-        return count
+        return count || 0
     }
 
     const filterRows = async (table: string, column: string, value: any) => {
@@ -68,7 +70,7 @@ export function useTables() {
             .select('*')
             .ilike(column, value)
 
-        return data
+        return data || []
     }
 
     return {
