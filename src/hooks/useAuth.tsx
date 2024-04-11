@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { AuthContext } from '@/context'
 import { supabase } from '@/database'
+import { jwtDecode } from 'jwt-decode'
 
 export function useAuth() {
     const { session, setSession, user, setUser } = useContext(AuthContext)
@@ -44,13 +45,31 @@ export function useAuth() {
     }
 
     useEffect(() => {
-        supabase.auth.getSession().then(({ data }) => {
-            const { session } = data
-            const { user } = session || {}
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (session) {
+                const {
+                    access_token,
+                    refresh_token,
+                    expires_at,
+                    expires_in,
+                    token_type,
+                    user
+                } = session
 
-            if (user) {
-                setSession(session)
-                initializeUser(user)
+                setSession({
+                    access_token,
+                    refresh_token,
+                    expires_at,
+                    expires_in,
+                    token_type,
+                })
+
+                const { user_role } = jwtDecode(access_token) as any
+
+                initializeUser({
+                    ...user,
+                    role: user_role
+                })
             }
         })
     }, [])
