@@ -10,7 +10,7 @@ export function Sidebar() {
     return (
         <aside className='w-20 xl:w-80 hidden sm:flex flex-col bg-zinc-950 gap-4 transition-width'>
             <SidebarHeader />
-            <div className='h-[85%] flex flex-col justify-between px-2'>
+            <div className='h-full flex flex-col justify-between px-2 pb-4'>
                 <div className='flex flex-col gap-2'>
                     {NAVIGATION_ROUTES.map((route, index) => (
                         <SidebarLink
