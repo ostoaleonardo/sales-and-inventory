@@ -12,10 +12,9 @@ export {
     NAVIGATION_ROUTES
 } from './routes.ts'
 
-export const TABLES = {
-    SALES: 'sales',
-    DISHES: 'dishes',
-    CATEGORIES: 'categories',
-}
+export {
+    TABLES,
+    ROLES
+} from './database.ts'
 
 export const ROWS_PER_PAGE = ['5', '10', '15', '20', '30', '40', '50', 'Todas']
