@@ -10,7 +10,6 @@ type Props = {
 
     // Search
     filterValue: string,
-    onValueChange: (value: string) => void,
     setFilterValue: (value: string) => void,
 
     // Show/Hide Columns
@@ -29,7 +28,6 @@ export function TopContent({
 
     // Search
     filterValue,
-    onValueChange,
     setFilterValue,
 
     // Show/Hide Columns
@@ -42,6 +40,14 @@ export function TopContent({
 }: Props) {
     const rowsPerPageValue = Number(Array.from(rowsPerPage)[0])
 
+    const onSearchChange = useCallback((value: string) => {
+        if (value) {
+            setFilterValue(value)
+        } else {
+            setFilterValue('')
+        }
+    }, [])
+
     const onClear = useCallback(() => {
         setFilterValue('')
     }, [])
@@ -53,7 +59,7 @@ export function TopContent({
                     isClearable
                     onClear={onClear}
                     value={filterValue}
-                    onValueChange={onValueChange}
+                    onValueChange={onSearchChange}
                     placeholder='Buscar categoría'
                     className='w-full sm:max-w-[44%]'
                     startContent={<Search className='w-4 h-4' />}

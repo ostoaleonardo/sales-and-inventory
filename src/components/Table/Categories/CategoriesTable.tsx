@@ -103,18 +103,14 @@ export function CategoriesTable({ onAdd, onEdit }: Props) {
     const filteredItems = useMemo(() => {
         let filteredDishes = categories
 
-        if (hasSearchFilter) { }
+        if (hasSearchFilter) {
+            filteredDishes = categories
+                .filter(({ name }) => name.toLowerCase()
+                    .includes(filterValue.toLowerCase()))
+        }
 
         return filteredDishes
     }, [categories, filterValue])
-
-    const onSearchChange = useCallback((value: string) => {
-        if (value) {
-            setFilterValue(value)
-        } else {
-            setFilterValue('')
-        }
-    }, [])
 
     // Sorting
     const sortedItems = useMemo(() => {
@@ -172,7 +168,6 @@ export function CategoriesTable({ onAdd, onEdit }: Props) {
 
                 // Search
                 filterValue={filterValue}
-                onValueChange={onSearchChange}
                 setFilterValue={setFilterValue}
 
                 // Show/Hide Columns
@@ -188,7 +183,6 @@ export function CategoriesTable({ onAdd, onEdit }: Props) {
         onAdd,
         totalRows,
         filterValue,
-        onSearchChange,
         setFilterValue,
         visibleColumns,
         setVisibleColumns,
