@@ -1,32 +1,31 @@
 import { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import { Login, Home, Sell, Dishes, Categories, Inventory } from './pages'
+import { Login, Home, Sales, Dishes, Categories, Inventory } from './pages'
 import { Sidebar, Nav } from './components'
-import { supabase } from './database'
+import { useAuth } from './hooks'
 
 function App() {
+    const { session } = useAuth()
     const navigate = useNavigate()
 
     useEffect(() => {
-        supabase.auth.onAuthStateChange((event) => {
-            if (event === 'SIGNED_IN') {
-                // navigate('/home')
-            } else if (event === 'SIGNED_OUT') {
-                navigate('/')
-            }
-        })
-    }, [])
+        if (session) {
+            navigate('/home')
+        } else {
+            navigate('/')
+        }
+    }, [session, navigate])
 
     return (
         <>
             <main className='w-full min-h-screen inline-flex'>
-                <Sidebar />
+                {session && <Sidebar />}
                 <section className='w-full flex flex-col'>
                     <Nav />
                     <Routes>
                         <Route path='/' element={<Login />} />
                         <Route path='/home' element={<Home />} />
-                        <Route path='/sell' element={<Sell />} />
+                        <Route path='/sales' element={<Sales />} />
                         <Route path='/dishes' element={<Dishes />} />
                         <Route path='/categories' element={<Categories />} />
                         <Route path='/inventory' element={<Inventory />} />
