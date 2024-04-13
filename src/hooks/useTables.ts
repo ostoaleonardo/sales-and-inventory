@@ -1,12 +1,14 @@
 import { supabase } from '@/database'
 
 export function useTables() {
-    const getAllRows = async (table: string) => {
+    const getAllRows = async (table: string, relationship?: string) => {
+        const query = relationship ? '*,' + relationship : '*'
+
         let { data } = await supabase
             .from(table)
-            .select('*')
+            .select(query)
 
-        return data || []
+        return data as unknown || []
     }
 
     const getRowsPerPage = async (table: string, from: number, to: number, relationship?: string) => {
