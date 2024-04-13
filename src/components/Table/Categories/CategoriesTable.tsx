@@ -101,15 +101,15 @@ export function CategoriesTable({ onAdd, onEdit }: Props) {
     const hasSearchFilter = Boolean(filterValue)
 
     const filteredItems = useMemo(() => {
-        let filteredDishes = categories
+        let filteredCategories = categories
 
         if (hasSearchFilter) {
-            filteredDishes = categories
+            filteredCategories = categories
                 .filter(({ name }) => name.toLowerCase()
                     .includes(filterValue.toLowerCase()))
         }
 
-        return filteredDishes
+        return filteredCategories
     }, [categories, filterValue])
 
     // Sorting
