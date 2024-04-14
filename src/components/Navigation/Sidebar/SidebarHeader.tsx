@@ -11,6 +11,7 @@ export function SidebarHeader() {
                 description={user?.role}
                 classNames={{
                     base: 'gap-3',
+                    wrapper: 'max-xl:hidden',
                     description: 'capitalize'
                 }}
                 avatarProps={{
