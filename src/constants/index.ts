@@ -9,6 +9,12 @@ export {
 } from './categories.ts'
 
 export {
+    INITIAL_SALES_COLUMNS,
+    SALES_COLUMNS,
+    CART_COLUMNS
+} from './sales.ts'
+
+export {
     NAVIGATION_ROUTES
 } from './routes.ts'
 
