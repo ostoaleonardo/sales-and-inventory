@@ -3,11 +3,15 @@ import { Link, Tooltip } from '@nextui-org/react'
 
 type Props = {
     href: string
+    isActive?: boolean
     icon?: React.ReactNode
     children: React.ReactNode
 }
 
-export function SidebarLink({ href, icon, children }: Props) {
+export function SidebarLink({ href, isActive, icon, children }: Props) {
+    const baseClass = 'flex items-center max-xl:justify-center rounded-xl px-8 py-4'
+    const activeClass = isActive && 'bg-primary/20'
+
     return (
         <Tooltip
             content={children}
@@ -17,9 +21,11 @@ export function SidebarLink({ href, icon, children }: Props) {
                 isBlock
                 to={href}
                 as={Linking}
-                color='foreground'
-                className='w-full flex items-center max-xl:justify-center px-8 py-4'
+                color={isActive ? 'primary' : 'foreground'}
+                className={`${baseClass} ${activeClass}`}
             >
+                {isActive && <div className='absolute left-0 w-1 h-3 bg-primary rounded-xl' />}
+
                 <div>
                     {icon}
                 </div>

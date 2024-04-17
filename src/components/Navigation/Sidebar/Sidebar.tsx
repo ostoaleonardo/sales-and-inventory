@@ -1,4 +1,5 @@
 import { Button } from '@nextui-org/react'
+import { useLocation } from 'react-router-dom'
 import { SidebarHeader, SidebarLink } from '.'
 import { useAuth } from '@/hooks'
 import { LogOut } from '@/icons'
@@ -6,6 +7,7 @@ import { NAVIGATION_ROUTES } from '@/constants'
 
 export function Sidebar() {
     const { logOut } = useAuth()
+    const { pathname } = useLocation()
 
     return (
         <aside className='w-20 xl:w-80 hidden sm:flex flex-col bg-zinc-950 gap-4 transition-width'>
@@ -17,6 +19,7 @@ export function Sidebar() {
                             key={index}
                             href={route.path}
                             icon={route.icon}
+                            isActive={pathname === route.path}
                         >
                             {route.name}
                         </SidebarLink>
