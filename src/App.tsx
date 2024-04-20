@@ -1,20 +1,10 @@
-import { useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Login, Home, Sales, Dishes, Categories, Inventory } from './pages'
 import { Sidebar, Nav } from './components'
 import { useAuth } from './hooks'
 
 function App() {
     const { session } = useAuth()
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if (session) {
-            navigate('/home')
-        } else {
-            navigate('/')
-        }
-    }, [])
 
     return (
         <>
@@ -29,7 +19,7 @@ function App() {
                         <Route path='/dishes' element={<Dishes />} />
                         <Route path='/categories' element={<Categories />} />
                         <Route path='/inventory' element={<Inventory />} />
-                        <Route path='*' element={<Login />} />
+                        <Route path='*' element={<Home />} />
                     </Routes>
                 </section>
             </main>
