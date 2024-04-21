@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Chip, Selection } from '@nextui-org/react'
 import { TopContent, BottomContent } from '.'
-import { Paragraph, DropdownActions } from '@/components'
+import { IdSnippet, Paragraph, DropdownActions } from '@/components'
 import { useTables } from '@/hooks'
 import { getFormattedDate } from '@/utils'
 import { Dish } from '@/types'
@@ -143,7 +143,7 @@ export function DishesTable({ onAdd, onEdit }: Props) {
         switch (columnKey) {
             case 'id':
                 return (
-                    <Paragraph>{item.id}</Paragraph>
+                    <IdSnippet id={item.id} />
                 )
             case 'name':
                 return (

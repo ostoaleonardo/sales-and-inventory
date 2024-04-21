@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner } from '@nextui-org/react'
 import { TopContent, BottomContent } from '.'
-import { Paragraph, DropdownActions } from '@/components'
+import { IdSnippet, Paragraph, DropdownActions } from '@/components'
 import { getFormattedDate } from '@/utils'
 import { useTables } from '@/hooks'
 import { Categories } from '@/types'
@@ -127,7 +127,7 @@ export function CategoriesTable({ onAdd, onEdit }: Props) {
         switch (columnKey) {
             case 'id':
                 return (
-                    <Paragraph>{item.id}</Paragraph>
+                    <IdSnippet id={item.id} />
                 )
             case 'name':
                 return (
