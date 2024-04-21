@@ -19,6 +19,11 @@ export function DropdownActions({ onEdit, onDelete }: Props) {
         return ['delete']
     }, [role])
 
+    const dropdownActions = [
+        { key: 'edit', action: onEdit },
+        { key: 'delete', action: onDelete }
+    ]
+
     return (
         <Dropdown shadow='sm'>
             <DropdownTrigger>
@@ -29,10 +34,13 @@ export function DropdownActions({ onEdit, onDelete }: Props) {
             <DropdownMenu
                 aria-label='Actions'
                 disabledKeys={disabledKeys()}
+                onAction={(key) => {
+                    const item = dropdownActions.find((item) => item.key === key)
+                    if (item) item.action()
+                }}
             >
                 <DropdownItem
                     key='edit'
-                    onPress={onEdit}
                     description='Actualizar información'
                     startContent={<Pencil className='w-4 h-4 mx-1' />}
                 >
@@ -41,7 +49,6 @@ export function DropdownActions({ onEdit, onDelete }: Props) {
                 <DropdownItem
                     key='delete'
                     color='danger'
-                    onPress={onDelete}
                     description={
                         role === ROLES.ADMIN
                             ? 'Eliminar permanentemente'
