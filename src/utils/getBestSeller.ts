@@ -13,6 +13,6 @@ export const getBestSeller = (sales: any) => {
             acc.push({ name, price, quantity, total })
         }
 
-        return acc.sort((a: any, b: any) => b.quantity - a.quantity)
+        return acc.sort((a: any, b: any) => b.quantity - a.quantity).slice(0, 6)
     }, [])
 }
