@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link as Linking, useLocation, useParams } from 'react-router-dom'
+import { Link as Linking, useLocation } from 'react-router-dom'
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link } from '@nextui-org/react'
 import { Typography } from '../Text'
 import { Menu } from '@/icons'
@@ -29,9 +29,7 @@ export function Nav() {
                 </NavbarBrand>
             </NavbarContent>
 
-            <NavbarMenu
-                className='bg-zinc-900 overflow-y-hidden'
-            >
+            <NavbarMenu className='bg-zinc-900 overflow-y-hidden'>
                 {NAVIGATION_ROUTES.map((item, index) => (
                     <NavbarMenuItem key={index}>
                         <Link
