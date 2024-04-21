@@ -1,6 +1,6 @@
 export { Login } from './Login.tsx'
 export { Home } from './Home.tsx'
-export { Sell } from './Sell.tsx'
+export { Sales } from './Sales.tsx'
 export { Dishes } from './Dishes.tsx'
 export { Categories } from './Categories.tsx'
 export { Inventory } from './Inventory.tsx'

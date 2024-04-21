@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Button, ButtonGroup, DateRangePicker } from '@nextui-org/react'
-import { BestSellersCard, DashboardCard, SalesOfLastWeekCard } from '@/components'
+import { Button } from '@nextui-org/react'
+import { BestSellersCard, Calendar, DashboardCard, SalesOfLastWeekCard } from '@/components'
 import { Restaurant, Box, Cash, Bowl, Loop } from '@/icons'
 import { useTables } from '@/hooks'
-import { emptyDateRange, currentWeek, lastWeek, currentMonth, getBestSeller, getDaysOfLastWeek } from '@/utils'
+import { emptyDateRange, getBestSeller, getDaysOfLastWeek } from '@/utils'
 import { Sale } from '@/types'
 import { TABLES } from '@/constants'
 
@@ -96,7 +96,7 @@ export function Home() {
     }, [])
 
     return (
-        <main className='w-full h-full flex flex-col gap-4 px-6 pb-8'>
+        <main className='w-full h-full flex flex-col px-6 pb-8 gap-4'>
             <header className='w-full flex flex-row items-start justify-end gap-2'>
                 <Button
                     isIconOnly
@@ -106,29 +106,9 @@ export function Home() {
                 >
                     <Loop className='w-4 h-4' />
                 </Button>
-                <DateRangePicker
-                    value={dateFilter}
-                    onChange={setDateFilter}
-                    className='max-w-72'
-                    CalendarTopContent={
-                        <ButtonGroup
-                            fullWidth
-                            size='sm'
-                            radius='full'
-                            variant='bordered'
-                            className='bg-content1 p-3'
-                        >
-                            <Button onPress={() => setDateFilter(currentWeek)}>
-                                Esta semana
-                            </Button>
-                            <Button onPress={() => setDateFilter(lastWeek)}>
-                                Semana pasada
-                            </Button>
-                            <Button onPress={() => setDateFilter(currentMonth)}>
-                                Este mes
-                            </Button>
-                        </ButtonGroup>
-                    }
+                <Calendar
+                    dateFilter={dateFilter}
+                    setDateFilter={setDateFilter}
                 />
             </header>
 

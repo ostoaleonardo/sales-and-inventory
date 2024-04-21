@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useDisclosure } from '@nextui-org/react'
-import { DishesModal } from '@/components'
-import { DishesTable } from '@/components/Table'
+import { DishesTable, DishesModal } from '@/components'
 
 export function Dishes() {
     const [selectedDish, setSelectedDish] = useState<number | undefined>(undefined)
@@ -18,7 +17,7 @@ export function Dishes() {
     }
 
     return (
-        <div className='w-full h-full flex p-8'>
+        <div className='w-full h-full flex px-6 py-8'>
             <DishesTable
                 onAdd={onAdd}
                 onEdit={onEdit}

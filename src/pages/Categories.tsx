@@ -17,7 +17,7 @@ export function Categories() {
     }
 
     return (
-        <main className='w-full h-full flex p-8'>
+        <main className='w-full h-full flex px-6 py-8'>
             <CategoriesTable
                 onAdd={onAdd}
                 onEdit={onEdit}
